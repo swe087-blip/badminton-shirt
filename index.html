@@ -1,0 +1,435 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>배드민턴복 수요조사</title>
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      background: #f5f6f8;
+      color: #181b22;
+      font-family: -apple-system, BlinkMacSystemFont, "Apple SD Gothic Neo", "Noto Sans KR", "Segoe UI", sans-serif;
+      line-height: 1.45;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .page {
+      width: min(860px, calc(100% - 32px));
+      margin: 0 auto;
+      padding: 34px 0 56px;
+    }
+
+    header {
+      padding-bottom: 20px;
+      border-bottom: 1px solid #d8dde7;
+      margin-bottom: 28px;
+    }
+
+    h1 {
+      margin: 0;
+      font-size: 32px;
+      line-height: 1.2;
+      letter-spacing: 0;
+    }
+
+    .hint {
+      margin: 8px 0 0;
+      color: #667085;
+      font-size: 14px;
+    }
+
+    form {
+      display: grid;
+      gap: 30px;
+    }
+
+    section {
+      min-width: 0;
+    }
+
+    .section-title {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      margin-bottom: 14px;
+    }
+
+    h2 {
+      margin: 0;
+      font-size: 21px;
+      letter-spacing: 0;
+    }
+
+    .required {
+      color: #b42318;
+      font-size: 13px;
+      font-weight: 800;
+    }
+
+    .field-row {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 14px;
+    }
+
+    .field {
+      display: grid;
+      gap: 7px;
+    }
+
+    .field label {
+      font-size: 14px;
+      font-weight: 800;
+    }
+
+    input[type="text"] {
+      width: 100%;
+      min-height: 44px;
+      border: 1px solid #cbd3df;
+      border-radius: 8px;
+      padding: 10px 12px;
+      background: #fff;
+      color: #181b22;
+      font: inherit;
+      letter-spacing: 0;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 14px;
+    }
+
+    .option {
+      min-width: 0;
+      cursor: pointer;
+    }
+
+    .option input {
+      position: absolute;
+      opacity: 0;
+      pointer-events: none;
+    }
+
+    .option-box {
+      height: 100%;
+      background: #fff;
+      border: 1px solid #d8dde7;
+      border-radius: 8px;
+      overflow: hidden;
+      transition: border-color 140ms ease, box-shadow 140ms ease, transform 140ms ease;
+    }
+
+    .option input:checked + .option-box {
+      border-color: #1b4d89;
+      box-shadow: 0 0 0 3px rgba(27, 77, 137, 0.16);
+    }
+
+    .option:hover .option-box {
+      border-color: #9aa8ba;
+      transform: translateY(-1px);
+    }
+
+    .option input:focus-visible + .option-box {
+      outline: 3px solid rgba(27, 77, 137, 0.26);
+      outline-offset: 2px;
+    }
+
+    .option-body {
+      padding: 14px;
+    }
+
+    .option-name {
+      margin: 0;
+      font-size: 16px;
+      font-weight: 850;
+      letter-spacing: 0;
+    }
+
+    .product-link {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 32px;
+      margin-top: 12px;
+      padding: 0 11px;
+      border: 1px solid #c5ccd8;
+      border-radius: 7px;
+      background: #f9fafb;
+      color: #26364f;
+      font-size: 13px;
+      font-weight: 800;
+    }
+
+    .image {
+      width: 80%;
+      aspect-ratio: 1 / 1;
+      margin: 12px auto 0;
+      background: #f2f2f2;
+      overflow: hidden;
+      border: 1px solid #d8dde7;
+      border-radius: 7px;
+    }
+
+    .image img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      display: block;
+    }
+
+    .reference {
+      width: min(240px, 60%);
+      aspect-ratio: 1 / 1;
+      margin: 0 auto 14px;
+      background: #fff;
+      border: 1px solid #d8dde7;
+      border-radius: 8px;
+      overflow: hidden;
+    }
+
+    .reference img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      display: block;
+    }
+
+    .actions {
+      position: sticky;
+      bottom: 0;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      margin-top: 10px;
+      padding: 16px;
+      border: 1px solid #d8dde7;
+      border-radius: 8px;
+      background: rgba(255, 255, 255, 0.94);
+      backdrop-filter: blur(8px);
+    }
+
+    .status {
+      margin: 0;
+      color: #667085;
+      font-size: 14px;
+    }
+
+    .status.error {
+      color: #b42318;
+      font-weight: 800;
+    }
+
+    .status.success {
+      color: #0f6b45;
+      font-weight: 800;
+    }
+
+    button {
+      min-height: 44px;
+      border: 0;
+      border-radius: 8px;
+      padding: 0 18px;
+      background: #18253b;
+      color: #fff;
+      font: inherit;
+      font-size: 15px;
+      font-weight: 850;
+      cursor: pointer;
+      white-space: nowrap;
+    }
+
+    button:disabled {
+      cursor: not-allowed;
+      opacity: 0.62;
+    }
+
+    @media (max-width: 560px) {
+      .field-row {
+        grid-template-columns: 1fr;
+      }
+
+      h1 {
+        font-size: 26px;
+      }
+
+      .actions {
+        align-items: stretch;
+        flex-direction: column;
+      }
+
+      button {
+        width: 100%;
+      }
+    }
+  </style>
+</head>
+<body>
+  <main class="page">
+    <header>
+      <h1>배드민턴복 수요조사</h1>
+      <p class="hint">항목마다 하나씩 선택하고 제출해 주세요.</p>
+    </header>
+
+    <form id="surveyForm" novalidate>
+      <section>
+        <div class="field-row">
+          <div class="field">
+            <label for="respondentName">이름 <span class="required">*</span></label>
+            <input id="respondentName" name="respondentName" type="text" autocomplete="name" required>
+          </div>
+          <div class="field">
+            <label for="memo">기타 의견</label>
+            <input id="memo" name="memo" type="text" placeholder="원하는 컨셉, 선호사항, 우려사항 등">
+          </div>
+        </div>
+      </section>
+
+      <section>
+        <div class="section-title">
+          <h2>웨어 종류</h2>
+          <span class="required">필수</span>
+        </div>
+        <div class="grid">
+          <label class="option">
+            <input type="radio" name="wearType" value="게임웨어">
+            <div class="option-box">
+              <div class="image"><img src="assets/wear-game.png" alt="게임웨어 예시"></div>
+              <div class="option-body">
+                <p class="option-name">게임웨어</p>
+                <a class="product-link" href="https://mintonlog.kr/product/list.html?cate_no=413" target="_blank" rel="noreferrer">제품 보기</a>
+              </div>
+            </div>
+          </label>
+
+          <label class="option">
+            <input type="radio" name="wearType" value="캐주얼웨어">
+            <div class="option-box">
+              <div class="image"><img src="assets/wear-casual.png" alt="캐주얼웨어 예시"></div>
+              <div class="option-body">
+                <p class="option-name">캐주얼웨어</p>
+                <a class="product-link" href="https://mintonlog.kr/product/list.html?cate_no=357" target="_blank" rel="noreferrer">제품 보기</a>
+              </div>
+            </div>
+          </label>
+        </div>
+      </section>
+
+      <section>
+        <div class="section-title">
+          <h2>라켓단 로고</h2>
+          <span class="required">필수</span>
+        </div>
+        <div class="reference"><img src="assets/logo-racket.png" alt="라켓단 로고"></div>
+        <div class="grid">
+          <label class="option">
+            <input type="radio" name="logo" value="넣기">
+            <div class="option-box"><div class="option-body"><p class="option-name">넣기</p></div></div>
+          </label>
+          <label class="option">
+            <input type="radio" name="logo" value="안 넣기">
+            <div class="option-box"><div class="option-body"><p class="option-name">안 넣기</p></div></div>
+          </label>
+        </div>
+      </section>
+
+      <section>
+        <div class="section-title">
+          <h2>이름 넣기</h2>
+          <span class="required">필수</span>
+        </div>
+        <div class="grid">
+          <label class="option">
+            <input type="radio" name="nameOnWear" value="넣기">
+            <div class="option-box"><div class="option-body"><p class="option-name">넣기</p></div></div>
+          </label>
+          <label class="option">
+            <input type="radio" name="nameOnWear" value="안 넣기">
+            <div class="option-box"><div class="option-body"><p class="option-name">안 넣기</p></div></div>
+          </label>
+        </div>
+      </section>
+
+      <div class="actions">
+        <p id="status" class="status">모든 필수 항목을 선택한 뒤 제출해 주세요.</p>
+        <button id="submitButton" type="submit">제출하기</button>
+      </div>
+    </form>
+  </main>
+
+  <script>
+    const APPS_SCRIPT_URL = "PASTE_APPS_SCRIPT_WEB_APP_URL_HERE";
+
+    const form = document.querySelector("#surveyForm");
+    const statusEl = document.querySelector("#status");
+    const submitButton = document.querySelector("#submitButton");
+    const requiredChoiceGroups = [
+      { name: "wearType", label: "웨어 종류" },
+      { name: "logo", label: "라켓단 로고" },
+      { name: "nameOnWear", label: "이름 넣기" },
+    ];
+
+    function setStatus(message, type) {
+      statusEl.textContent = message;
+      statusEl.className = "status" + (type ? " " + type : "");
+    }
+
+    function checkedValue(name) {
+      const input = document.querySelector(`input[name="${name}"]:checked`);
+      return input ? input.value : "";
+    }
+
+    form.addEventListener("submit", async (event) => {
+      event.preventDefault();
+
+      if (APPS_SCRIPT_URL === "PASTE_APPS_SCRIPT_WEB_APP_URL_HERE") {
+        setStatus("Apps Script 웹앱 URL을 HTML에 먼저 넣어야 제출됩니다.", "error");
+        return;
+      }
+
+      if (!document.querySelector("#respondentName").value.trim()) {
+        setStatus("이름을 입력해 주세요.", "error");
+        return;
+      }
+
+      const missingGroup = requiredChoiceGroups.find((group) => !checkedValue(group.name));
+      if (missingGroup) {
+        setStatus(`${missingGroup.label} 항목을 선택해 주세요.`, "error");
+        return;
+      }
+
+      submitButton.disabled = true;
+      setStatus("제출 중입니다.", "");
+
+      try {
+        // urlencoded 본문은 CORS preflight 없이 전송되고, Apps Script 응답(JSON)을 읽을 수 있다
+        const response = await fetch(APPS_SCRIPT_URL, {
+          method: "POST",
+          body: new URLSearchParams(new FormData(form)),
+        });
+        const result = await response.json();
+        if (!result.ok) throw new Error(result.error || "unknown");
+
+        form.reset();
+        setStatus("제출되었습니다. 감사합니다.", "success");
+        window.scrollTo({ top: 0, behavior: "smooth" });
+      } catch (error) {
+        setStatus("제출에 실패했습니다. 잠시 후 다시 시도해 주세요.", "error");
+      } finally {
+        submitButton.disabled = false;
+      }
+    });
+  </script>
+</body>
+</html>
