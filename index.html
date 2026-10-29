@@ -188,6 +188,43 @@
       display: block;
     }
 
+    .grid.stack {
+      grid-template-columns: 1fr;
+    }
+
+    .images {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 12px;
+      padding: 14px 14px 0;
+    }
+
+    .images.single {
+      grid-template-columns: minmax(0, 1fr);
+      width: calc(50% + 6px);
+    }
+
+    .images .image {
+      width: 100%;
+      margin: 0;
+    }
+
+    .links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    .notice {
+      margin: 14px 0 0;
+      padding: 12px 14px;
+      border: 1px solid #d8dde7;
+      border-radius: 8px;
+      background: #fff;
+      color: #26364f;
+      font-size: 14px;
+    }
+
     .reference {
       width: min(240px, 60%);
       aspect-ratio: 1 / 1;
@@ -260,6 +297,10 @@
         grid-template-columns: 1fr;
       }
 
+      .images.single {
+        width: 100%;
+      }
+
       h1 {
         font-size: 26px;
       }
@@ -280,6 +321,7 @@
     <header>
       <h1>배드민턴복 수요조사</h1>
       <p class="hint">항목마다 하나씩 선택하고 제출해 주세요.</p>
+      <p class="notice">이번 조사에서 게임웨어와 캐주얼웨어 중 하나를 먼저 정하고, 이후 빅터와 라이더 제품을 섞어서 디자인 투표를 받아 결정할 예정입니다.</p>
     </header>
 
     <form id="surveyForm" novalidate>
@@ -301,14 +343,20 @@
           <h2>웨어 종류</h2>
           <span class="required">필수</span>
         </div>
-        <div class="grid">
+        <div class="grid stack">
           <label class="option">
             <input type="radio" name="wearType" value="게임웨어">
             <div class="option-box">
-              <div class="image"><img src="assets/wear-game.jpg" alt="게임웨어 예시"></div>
+              <div class="images">
+                <div class="image"><img src="assets/wear-game-1.jpg" alt="게임웨어 예시 1"></div>
+                <div class="image"><img src="assets/wear-game-2.jpg" alt="게임웨어 예시 2"></div>
+              </div>
               <div class="option-body">
                 <p class="option-name">게임웨어</p>
-                <a class="product-link" href="https://mintonlog.kr/product/list.html?cate_no=413" target="_blank" rel="noreferrer">제품 보기</a>
+                <div class="links">
+                  <a class="product-link" href="https://mintonlog.kr/product/빅터-배드민턴-의류-티셔츠-경기복-vtc6cgw006m/3528/category/413/display/1/" target="_blank" rel="noreferrer">제품 보기 · VTC6CGW006M</a>
+                  <a class="product-link" href="https://mintonlog.kr/product/빅터-배드민턴-티셔츠-의류-경기복-vt26agw004f/3092/category/413/display/1/" target="_blank" rel="noreferrer">제품 보기 · VT26AGW004F</a>
+                </div>
               </div>
             </div>
           </label>
@@ -316,10 +364,14 @@
           <label class="option">
             <input type="radio" name="wearType" value="캐주얼웨어">
             <div class="option-box">
-              <div class="image"><img src="assets/wear-casual.jpg" alt="캐주얼웨어 예시"></div>
+              <div class="images single">
+                <div class="image"><img src="assets/wear-casual.jpg" alt="캐주얼웨어 예시"></div>
+              </div>
               <div class="option-body">
                 <p class="option-name">캐주얼웨어</p>
-                <a class="product-link" href="https://mintonlog.kr/product/list.html?cate_no=357" target="_blank" rel="noreferrer">제품 보기</a>
+                <div class="links">
+                  <a class="product-link" href="https://mintonlog.kr/product/빅터-vtc6cts002m-배드민턴의류-티셔츠-배드민턴복/3636/category/447/display/1/" target="_blank" rel="noreferrer">제품 보기 · VTC6CTS002M</a>
+                </div>
               </div>
             </div>
           </label>
@@ -399,7 +451,7 @@
       }
 
       if (!document.querySelector("#respondentName").value.trim()) {
-        setStatus("이름을 입력해 주세요.", "error");
+        setStatus("LDAP을 입력해 주세요.", "error");
         return;
       }
 
