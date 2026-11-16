@@ -209,6 +209,13 @@
       margin: 0;
     }
 
+    .brand {
+      margin-left: 6px;
+      color: #667085;
+      font-size: 13px;
+      font-weight: 700;
+    }
+
     .links {
       display: flex;
       flex-wrap: wrap;
@@ -320,8 +327,8 @@
   <main class="page">
     <header>
       <h1>배드민턴복 수요조사</h1>
-      <p class="hint">항목마다 하나씩 선택하고 제출해 주세요.</p>
-      <p class="notice">이번 조사에서 게임웨어와 캐주얼웨어 중 하나를 먼저 정하고, 이후 빅터와 라이더 제품을 섞어서 디자인 투표를 받아 결정할 예정입니다.</p>
+      <p class="hint">LDAP을 입력하고 디자인 하나를 선택해 제출해 주세요.</p>
+      <p class="notice">빅터·라이더 경기복 중 마음에 드는 디자인 하나를 골라 주세요. 이미지를 누르면 선택되고, 아래 버튼으로 제품 상세를 볼 수 있습니다.</p>
     </header>
 
     <form id="surveyForm" novalidate>
@@ -340,37 +347,86 @@
 
       <section>
         <div class="section-title">
-          <h2>웨어 종류</h2>
+          <h2>디자인 선택</h2>
           <span class="required">필수</span>
         </div>
         <div class="grid stack">
           <label class="option">
-            <input type="radio" name="wearType" value="게임웨어">
+            <input type="radio" name="wearType" value="디자인 1">
             <div class="option-box">
               <div class="images">
-                <div class="image"><img src="assets/wear-game-1.jpg" alt="게임웨어 예시 1"></div>
-                <div class="image"><img src="assets/wear-game-2.jpg" alt="게임웨어 예시 2"></div>
+                <div class="image"><img src="assets/p3091.jpg" alt="디자인 1 남" loading="lazy"></div>
+                <div class="image"><img src="assets/p3092.jpg" alt="디자인 1 여" loading="lazy"></div>
               </div>
               <div class="option-body">
-                <p class="option-name">게임웨어</p>
+                <p class="option-name">디자인 1 <span class="brand">빅터</span></p>
                 <div class="links">
-                  <a class="product-link" href="https://mintonlog.kr/product/빅터-배드민턴-의류-티셔츠-경기복-vtc6cgw006m/3528/category/413/display/1/" target="_blank" rel="noreferrer">제품 보기 · VTC6CGW006M</a>
-                  <a class="product-link" href="https://mintonlog.kr/product/빅터-배드민턴-티셔츠-의류-경기복-vt26agw004f/3092/category/413/display/1/" target="_blank" rel="noreferrer">제품 보기 · VT26AGW004F</a>
+                  <a class="product-link" href="https://mintonlog.kr/product/detail.html?product_no=3091" target="_blank" rel="noreferrer">남 · VT26AGW004M</a>
+                  <a class="product-link" href="https://mintonlog.kr/product/detail.html?product_no=3092" target="_blank" rel="noreferrer">여 · VT26AGW004F</a>
                 </div>
               </div>
             </div>
           </label>
 
           <label class="option">
-            <input type="radio" name="wearType" value="캐주얼웨어">
+            <input type="radio" name="wearType" value="디자인 2">
+            <div class="option-box">
+              <div class="images">
+                <div class="image"><img src="assets/p2728.jpg" alt="디자인 2 남" loading="lazy"></div>
+                <div class="image"><img src="assets/p2636.jpg" alt="디자인 2 여" loading="lazy"></div>
+              </div>
+              <div class="option-body">
+                <p class="option-name">디자인 2 <span class="brand">빅터</span></p>
+                <div class="links">
+                  <a class="product-link" href="https://mintonlog.kr/product/detail.html?product_no=2728" target="_blank" rel="noreferrer">남 · VT25CGW024M</a>
+                  <a class="product-link" href="https://mintonlog.kr/product/detail.html?product_no=2636" target="_blank" rel="noreferrer">여 · VT25CGW024F</a>
+                </div>
+              </div>
+            </div>
+          </label>
+
+          <label class="option">
+            <input type="radio" name="wearType" value="디자인 3">
+            <div class="option-box">
+              <div class="images">
+                <div class="image"><img src="assets/p2632.jpg" alt="디자인 3 남" loading="lazy"></div>
+                <div class="image"><img src="assets/p2716.jpg" alt="디자인 3 여" loading="lazy"></div>
+              </div>
+              <div class="option-body">
+                <p class="option-name">디자인 3 <span class="brand">빅터</span></p>
+                <div class="links">
+                  <a class="product-link" href="https://mintonlog.kr/product/detail.html?product_no=2632" target="_blank" rel="noreferrer">남 · VT25CGW020M</a>
+                  <a class="product-link" href="https://mintonlog.kr/product/detail.html?product_no=2716" target="_blank" rel="noreferrer">여 · VT25CGW034F</a>
+                </div>
+              </div>
+            </div>
+          </label>
+
+          <label class="option">
+            <input type="radio" name="wearType" value="디자인 4">
             <div class="option-box">
               <div class="images single">
-                <div class="image"><img src="assets/wear-casual.jpg" alt="캐주얼웨어 예시"></div>
+                <div class="image"><img src="assets/p3389.jpg" alt="디자인 4 남녀공용" loading="lazy"></div>
               </div>
               <div class="option-body">
-                <p class="option-name">캐주얼웨어</p>
+                <p class="option-name">디자인 4 <span class="brand">라이더</span></p>
                 <div class="links">
-                  <a class="product-link" href="https://mintonlog.kr/product/빅터-vtc6cts002m-배드민턴의류-티셔츠-배드민턴복/3636/category/447/display/1/" target="_blank" rel="noreferrer">제품 보기 · VTC6CTS002M</a>
+                  <a class="product-link" href="https://mintonlog.kr/product/detail.html?product_no=3389" target="_blank" rel="noreferrer">남녀공용 · 2026R-35</a>
+                </div>
+              </div>
+            </div>
+          </label>
+
+          <label class="option">
+            <input type="radio" name="wearType" value="디자인 5">
+            <div class="option-box">
+              <div class="images single">
+                <div class="image"><img src="assets/p3388.jpg" alt="디자인 5 남녀공용" loading="lazy"></div>
+              </div>
+              <div class="option-body">
+                <p class="option-name">디자인 5 <span class="brand">라이더</span></p>
+                <div class="links">
+                  <a class="product-link" href="https://mintonlog.kr/product/detail.html?product_no=3388" target="_blank" rel="noreferrer">남녀공용 · 2026R-26</a>
                 </div>
               </div>
             </div>
@@ -378,40 +434,9 @@
         </div>
       </section>
 
-      <section>
-        <div class="section-title">
-          <h2>라켓단 로고</h2>
-          <span class="required">필수</span>
-        </div>
-        <div class="reference"><img src="assets/logo-racket.png" alt="라켓단 로고"></div>
-        <div class="grid">
-          <label class="option">
-            <input type="radio" name="logo" value="넣기">
-            <div class="option-box"><div class="option-body"><p class="option-name">넣기</p></div></div>
-          </label>
-          <label class="option">
-            <input type="radio" name="logo" value="안 넣기">
-            <div class="option-box"><div class="option-body"><p class="option-name">안 넣기</p></div></div>
-          </label>
-        </div>
-      </section>
-
-      <section>
-        <div class="section-title">
-          <h2>이름 넣기</h2>
-          <span class="required">필수</span>
-        </div>
-        <div class="grid">
-          <label class="option">
-            <input type="radio" name="nameOnWear" value="넣기">
-            <div class="option-box"><div class="option-body"><p class="option-name">넣기</p></div></div>
-          </label>
-          <label class="option">
-            <input type="radio" name="nameOnWear" value="안 넣기">
-            <div class="option-box"><div class="option-body"><p class="option-name">안 넣기</p></div></div>
-          </label>
-        </div>
-      </section>
+      <!-- 배포된 Apps Script가 logo·nameOnWear를 필수로 검사하므로 고정값으로 보낸다 -->
+      <input type="hidden" name="logo" value="-">
+      <input type="hidden" name="nameOnWear" value="-">
 
       <div class="actions">
         <p id="status" class="status">모든 필수 항목을 선택한 뒤 제출해 주세요.</p>
@@ -427,9 +452,7 @@
     const statusEl = document.querySelector("#status");
     const submitButton = document.querySelector("#submitButton");
     const requiredChoiceGroups = [
-      { name: "wearType", label: "웨어 종류" },
-      { name: "logo", label: "라켓단 로고" },
-      { name: "nameOnWear", label: "이름 넣기" },
+      { name: "wearType", label: "디자인" },
     ];
 
     function setStatus(message, type) {
