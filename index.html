@@ -327,7 +327,7 @@
   <main class="page">
     <header>
       <h1>배드민턴복 수요조사</h1>
-      <p class="hint">LDAP을 입력하고 디자인 하나를 선택해 제출해 주세요.</p>
+      <p class="hint">LDAP을 입력하고 마음에 드는 디자인을 모두 선택해 제출해 주세요.</p>
     </header>
 
     <form id="surveyForm" novalidate>
@@ -346,12 +346,12 @@
 
       <section>
         <div class="section-title">
-          <h2>디자인 선택</h2>
+          <h2>디자인 선택 <span class="brand">복수 선택 가능</span></h2>
           <span class="required">필수</span>
         </div>
         <div class="grid stack">
           <label class="option">
-            <input type="radio" name="wearType" value="디자인 1">
+            <input type="checkbox" name="wearType" value="디자인 1">
             <div class="option-box">
               <div class="images">
                 <div class="image"><img src="assets/p3091.jpg" alt="디자인 1 남" loading="lazy"></div>
@@ -368,7 +368,7 @@
           </label>
 
           <label class="option">
-            <input type="radio" name="wearType" value="디자인 2">
+            <input type="checkbox" name="wearType" value="디자인 2">
             <div class="option-box">
               <div class="images">
                 <div class="image"><img src="assets/p2728.jpg" alt="디자인 2 남" loading="lazy"></div>
@@ -385,7 +385,7 @@
           </label>
 
           <label class="option">
-            <input type="radio" name="wearType" value="디자인 3">
+            <input type="checkbox" name="wearType" value="디자인 3">
             <div class="option-box">
               <div class="images">
                 <div class="image"><img src="assets/p2632.jpg" alt="디자인 3 남" loading="lazy"></div>
@@ -402,7 +402,7 @@
           </label>
 
           <label class="option">
-            <input type="radio" name="wearType" value="디자인 4">
+            <input type="checkbox" name="wearType" value="디자인 4">
             <div class="option-box">
               <div class="images single">
                 <div class="image"><img src="assets/p3389.jpg" alt="디자인 4 남녀공용" loading="lazy"></div>
@@ -417,7 +417,7 @@
           </label>
 
           <label class="option">
-            <input type="radio" name="wearType" value="디자인 5">
+            <input type="checkbox" name="wearType" value="디자인 5">
             <div class="option-box">
               <div class="images single">
                 <div class="image"><img src="assets/p3388.jpg" alt="디자인 5 남녀공용" loading="lazy"></div>
@@ -464,6 +464,16 @@
       return input ? input.value : "";
     }
 
+    // 복수 선택값은 Apps Script가 첫 값만 읽으므로 한 칸에 쉼표로 합쳐 보낸다
+    function buildBody() {
+      const params = new URLSearchParams();
+      const data = new FormData(form);
+      for (const key of new Set(data.keys())) {
+        params.set(key, data.getAll(key).join(", "));
+      }
+      return params;
+    }
+
     form.addEventListener("submit", async (event) => {
       event.preventDefault();
 
@@ -490,7 +500,7 @@
         // urlencoded 본문은 CORS preflight 없이 전송되고, Apps Script 응답(JSON)을 읽을 수 있다
         const response = await fetch(APPS_SCRIPT_URL, {
           method: "POST",
-          body: new URLSearchParams(new FormData(form)),
+          body: buildBody(),
         });
         const result = await response.json();
         if (!result.ok) throw new Error(result.error || "unknown");
