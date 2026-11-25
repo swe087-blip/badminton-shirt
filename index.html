@@ -216,6 +216,19 @@
       font-weight: 700;
     }
 
+    .images.full {
+      grid-template-columns: minmax(0, 1fr);
+    }
+
+    .images.full .image {
+      aspect-ratio: 11 / 10;
+    }
+
+    .images.full .image img {
+      object-fit: cover;
+      object-position: top;
+    }
+
     .links {
       display: flex;
       flex-wrap: wrap;
@@ -308,6 +321,10 @@
         width: 100%;
       }
 
+      .grid {
+        grid-template-columns: 1fr;
+      }
+
       h1 {
         font-size: 26px;
       }
@@ -349,20 +366,15 @@
           <h2>디자인 선택 <span class="brand">복수 선택 가능</span></h2>
           <span class="required">필수</span>
         </div>
-        <div class="grid stack">
+        <div class="grid">
           <label class="option">
             <input type="checkbox" name="wearType" value="디자인 1">
             <div class="option-box">
-              <div class="images">
-                <div class="image"><img src="assets/p3091.jpg" alt="디자인 1 남" loading="lazy"></div>
-                <div class="image"><img src="assets/p3092.jpg" alt="디자인 1 여" loading="lazy"></div>
+              <div class="images full">
+                <div class="image"><img src="assets/d1.jpg" alt="디자인 1" loading="lazy"></div>
               </div>
               <div class="option-body">
-                <p class="option-name">디자인 1 <span class="brand">빅터</span></p>
-                <div class="links">
-                  <a class="product-link" href="https://mintonlog.kr/product/detail.html?product_no=3091" target="_blank" rel="noreferrer">남 · VT26AGW004M</a>
-                  <a class="product-link" href="https://mintonlog.kr/product/detail.html?product_no=3092" target="_blank" rel="noreferrer">여 · VT26AGW004F</a>
-                </div>
+                <p class="option-name">디자인 1</p>
               </div>
             </div>
           </label>
@@ -370,16 +382,11 @@
           <label class="option">
             <input type="checkbox" name="wearType" value="디자인 2">
             <div class="option-box">
-              <div class="images">
-                <div class="image"><img src="assets/p2728.jpg" alt="디자인 2 남" loading="lazy"></div>
-                <div class="image"><img src="assets/p2636.jpg" alt="디자인 2 여" loading="lazy"></div>
+              <div class="images full">
+                <div class="image"><img src="assets/d2.jpg" alt="디자인 2" loading="lazy"></div>
               </div>
               <div class="option-body">
-                <p class="option-name">디자인 2 <span class="brand">빅터</span></p>
-                <div class="links">
-                  <a class="product-link" href="https://mintonlog.kr/product/detail.html?product_no=2728" target="_blank" rel="noreferrer">남 · VT25CGW024M</a>
-                  <a class="product-link" href="https://mintonlog.kr/product/detail.html?product_no=2636" target="_blank" rel="noreferrer">여 · VT25CGW024F</a>
-                </div>
+                <p class="option-name">디자인 2</p>
               </div>
             </div>
           </label>
@@ -387,16 +394,11 @@
           <label class="option">
             <input type="checkbox" name="wearType" value="디자인 3">
             <div class="option-box">
-              <div class="images">
-                <div class="image"><img src="assets/p2632.jpg" alt="디자인 3 남" loading="lazy"></div>
-                <div class="image"><img src="assets/p2631.jpg" alt="디자인 3 여" loading="lazy"></div>
+              <div class="images full">
+                <div class="image"><img src="assets/d3.jpg" alt="디자인 3" loading="lazy"></div>
               </div>
               <div class="option-body">
-                <p class="option-name">디자인 3 <span class="brand">빅터</span></p>
-                <div class="links">
-                  <a class="product-link" href="https://mintonlog.kr/product/detail.html?product_no=2632" target="_blank" rel="noreferrer">남 · VT25CGW020M</a>
-                  <a class="product-link" href="https://mintonlog.kr/product/detail.html?product_no=2631" target="_blank" rel="noreferrer">여 · VT25CGW020F</a>
-                </div>
+                <p class="option-name">디자인 3</p>
               </div>
             </div>
           </label>
@@ -404,14 +406,11 @@
           <label class="option">
             <input type="checkbox" name="wearType" value="디자인 4">
             <div class="option-box">
-              <div class="images single">
-                <div class="image"><img src="assets/p3389.jpg" alt="디자인 4 남녀공용" loading="lazy"></div>
+              <div class="images full">
+                <div class="image"><img src="assets/d4.jpg" alt="디자인 4" loading="lazy"></div>
               </div>
               <div class="option-body">
-                <p class="option-name">디자인 4 <span class="brand">라이더</span></p>
-                <div class="links">
-                  <a class="product-link" href="https://mintonlog.kr/product/detail.html?product_no=3389" target="_blank" rel="noreferrer">남녀공용 · 2026R-35</a>
-                </div>
+                <p class="option-name">디자인 4</p>
               </div>
             </div>
           </label>
@@ -419,14 +418,23 @@
           <label class="option">
             <input type="checkbox" name="wearType" value="디자인 5">
             <div class="option-box">
-              <div class="images single">
-                <div class="image"><img src="assets/p3388.jpg" alt="디자인 5 남녀공용" loading="lazy"></div>
+              <div class="images full">
+                <div class="image"><img src="assets/d5.jpg" alt="디자인 5" loading="lazy"></div>
               </div>
               <div class="option-body">
-                <p class="option-name">디자인 5 <span class="brand">라이더</span></p>
-                <div class="links">
-                  <a class="product-link" href="https://mintonlog.kr/product/detail.html?product_no=3388" target="_blank" rel="noreferrer">남녀공용 · 2026R-26</a>
-                </div>
+                <p class="option-name">디자인 5</p>
+              </div>
+            </div>
+          </label>
+
+          <label class="option">
+            <input type="checkbox" name="wearType" value="디자인 6">
+            <div class="option-box">
+              <div class="images full">
+                <div class="image"><img src="assets/d6.jpg" alt="디자인 6" loading="lazy"></div>
+              </div>
+              <div class="option-body">
+                <p class="option-name">디자인 6</p>
               </div>
             </div>
           </label>
